@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Double Placed Slot Example</title>
+  <script type="module" src="double-placed-slot.js"></script>
+</head>
+<body>
+  <p>
+    Example of a web component using a slot that has been placed in multiple places.
+    This can not be done therefore you will only see the text once.
+  </p>
+  <double-placed-slot>
+    <span slot="make-bold">Make this text bold.</span>
+    Hello.
+  </double-placed-slot>
+</body>
+</html>

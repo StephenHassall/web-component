@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slotted Example</title>
+  <script type="module" src="slotted.js"></script>
+</head>
+<body>
+  <style>
+    .slot-class {
+      font-style: italic;
+    }
+  </style>
+  <p>Example of different slotted styles.</p>
+  <slotted-example>
+    <div>Slotted Test 1</div>
+    <div style="background-color: lightgray;">Slotted Test 2 (inline style)</div>
+    <div class="slot-class">Slotted Test 3 (with class)</div>
+    <div attribute-set>Slotted Test 4 (with attribute)</div>
+    <div attribute-value="good">Slotted Test 5 (with attribute value)</div>
+    <p>Slotted Test 6 (with P)</p>
+    <div test7>Slotted Test 7 (with ::before)</div>
+    <div test8>Slotted Test 8 (with ::after)</div>
+    <div test9>Slotted Test 9 (with :hover)</div>
+  </slotted-example>
+</body>
+</html>

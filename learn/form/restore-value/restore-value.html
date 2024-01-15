@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Restore Value Example</title>
+  <script type="module" src="restore-value.js"></script>
+</head>
+<body>
+  <p>Looking at a form friendly web compoment and how to restore its value when you come back to page.</p>
+  <p>Set the random number, press Submit button, then move back a page. The random number should be restored to previous value.</p>
+  <p>You will need to expand this example to test it.</p>
+  <form action="restore-value.html">
+    <label for="normal">Normal</label>
+    <input id="normal" type="text" name="a">
+    <br>
+    <br>
+    <label>Random number</label>
+    <form-restore-value name="b"></form-restore-value>
+    <br>
+    <br>
+    <input type="submit">
+  </form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Define Twice Example</title>
+</head>
+<body>
+  <p>
+    Tests to see what happens when you define a custom element tag more than once. You can create the <code>&lt;test-tag&gt;</code>
+    the first time without an error, but if you try to do it again, or redefine it to another custom element class, then
+    you will get an error message.
+  </p>
+  <button onclick="createTestCustomElement()">Create <code>&lt;test-tag&gt;</code> custom element.</button>
+  <br>
+  <button onclick="redefineToAnotherCusomElement()">Redefine <code>&lt;test-tag&gt;</code> to another custom element.</button>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Create a fake custom elements which do nothing
+    class TestCustomElement extends HTMLElement { constructor() { super(); } }
+    class RedefineCustomElement extends HTMLElement { constructor() { super(); } }
+
+    // Create the test custom element click event
+    window.createTestCustomElement = function () {
+      // Put code between a try/catch block
+      try {
+        // Create custom element
+        customElements.define('test-tag', TestCustomElement);
+
+        // Log success
+        window.customLogEvent('test-tag (TestCustomElement) created.')
+      } catch (error) {
+        window.customLogEvent('test-tag (TestCustomElement) error. ' + error.toString());
+      }
+    };
+
+    // Redefine the test custom element click event
+    window.redefineToAnotherCusomElement = function () {
+      // Put code between a try/catch block
+      try {
+        // Create custom element
+        customElements.define('test-tag', RedefineCustomElement);
+
+        // Log success
+        window.customLogEvent('test-tag (RedefineCustomElement) created.')
+      } catch (error) {
+        window.customLogEvent('test-tag (RedefineCustomElement) error. ' + error.toString());
+      }
+    };
+
+  </script>
+</body>
+</html>

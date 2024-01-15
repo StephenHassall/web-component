@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slot Element</title>
+  <script type="module" src="slot-element.js"></script>
+</head>
+<body>
+  <p>Checking the ids of the slot and slotted elements from inside and outside the web component.</p>
+  <slot-element>
+    <span id="slotted-id" slot="make-bold">Slot example text.</span>
+  </slot-element>
+  <br>
+  <button onclick="checkForIdsClick()">Check for IDs (outside)</button>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Check for IDs click event
+    window.checkForIdsClick = function () {
+        // Look for slot element
+        const slotElement = document.getElementById('slot-id');
+
+        // Report the result
+        if (slotElement !== null) {
+            // Log event
+            window.customLogEvent('OUTSIDE: slot element found');
+        } else {
+            // Log event
+            window.customLogEvent('OUTSIDE: slot element not found');
+        }
+
+        // Look for slotted element
+        const slottedElement = document.getElementById('slotted-id');
+
+        // Report the result
+        if (slottedElement !== null) {
+            // Log event
+            window.customLogEvent('OUTSIDE: slotted element found');
+        } else {
+            // Log event
+            window.customLogEvent('OUTSIDE: slotted element not found');
+        }
+    };
+  </script>
+</body>
+</html>

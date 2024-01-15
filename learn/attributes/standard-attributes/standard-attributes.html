@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Standard Attributes Example</title>
+</head>
+<body>
+  <style>
+    .test1 {
+      background-color: lightgray;
+    }
+    .test2 {
+      background-color: lightpink;
+    }
+  </style>
+  <p>
+    Creating an instance of a custom element and attaching it to a parent element, and
+    attaching that to the DOM. Add and update the attribute. Monitors all the related events
+    to see when things happen.
+  </p>
+  <standard-attributes id="test" class="test1" style="font-size: large;"></standard-attributes>
+  <br>
+  <button onclick="updateClass1Click()">Update Class #1</button>
+  <br>
+  <button onclick="updateClass2Click()">Update Class #2</button>
+  <br>
+  <button onclick="updateStyle1Click()">Update Style #1</button>
+  <br>
+  <button onclick="updateStyle2Click()">Update Style #2</button>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get standard attributes element
+    const standardAttributesElement = document.getElementById('test');
+
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Update events
+    window.updateClass1Click = function () {
+      if (standardAttributesElement.classList.contains('test2') === true) standardAttributesElement.classList.remove('test2');
+      standardAttributesElement.classList.add('test1');
+    };
+    window.updateClass2Click = function () {
+      if (standardAttributesElement.classList.contains('test1') === true) standardAttributesElement.classList.remove('test1');
+      standardAttributesElement.classList.add('test2');
+    };
+    window.updateStyle1Click = function () {
+      standardAttributesElement.style.fontSize = 'small';
+    };
+    window.updateStyle2Click = function () {
+      standardAttributesElement.style.fontSize = 'large';
+    };
+
+    // Load the custom element last
+    import('./standard-attributes.js');
+
+  </script>
+</body>
+</html>

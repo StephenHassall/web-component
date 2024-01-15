@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shadow DOM Barrier Example</title>
+  <script type="module" src="shadow-dom-barrier1.js"></script>
+</head>
+<body>
+  <style>
+    div {
+      font-size: x-large;
+      background-color: lightblue;
+    }
+    .test {
+      color: red;
+    }
+  </style>
+  <p>Example of how some styles cannot pass through the shadow DOM barrier.</p>
+  <with-shadow-dom1></with-shadow-dom1>
+  <br>
+  <without-shadow-dom1></without-shadow-dom1>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hidden Id Example</title>
+  <script type="module" src="hidden-id.js"></script>
+</head>
+<body>
+  <p>Looking at how the ID value is isolated within a shadow DOM.</p>
+  <p>First copy of custom element.</p>
+  <hidden-id></hidden-id>
+  <br>
+  <p>Second copy of custom element.</p>
+  <hidden-id></hidden-id>
+  <br><br>
+  <button onclick="lookForElementClick()">Look for element with id="result"</button>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Look for element click
+    window.lookForElementClick = function () {
+      // Search for the element with the result id
+      const resultElement = document.getElementById('result');
+
+      // If not found
+      if (resultElement === null) {
+        // Log event
+        window.customLogEvent('Unable to find element');
+      } else {
+        // Log event
+        window.customLogEvent('Element found');
+      }
+    };
+
+  </script>
+</body>
+</html>

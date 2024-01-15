@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Date Type Attributes Example</title>
+  <script type="module" src="data-type-attributes.js"></script>
+</head>
+<body>
+  <p>
+    Converting text attributes into different types.
+  </p>
+  <data-type-attributes
+    id="test"
+    text="sample text"
+    integer="123"
+    number="456.789"
+    date="2022-08-27T11:53:00.000Z"
+    boolean
+    >
+  </data-type-attributes>
+  <br>
+  <button onclick="changeText()">Change Text Attribute</button><br>
+  <button onclick="changeInteger()">Change Integer Attribute</button><br>
+  <button onclick="changeNumber()">Change Number Attribute</button><br>
+  <button onclick="changeDate()">Change Date Attribute</button><br>
+  <button onclick="changeBoolean()">Change Boolean Attribute</button><br>
+  <script type="module">
+
+    // Get data type attribute element
+    const dataTypeAttributesElement = document.getElementById('test');
+
+    // Change click events
+    window.changeText = function () {
+      dataTypeAttributesElement.setRandomText();
+    };
+    window.changeInteger = function () {
+      dataTypeAttributesElement.setRandomInteger();
+    };
+    window.changeNumber = function () {
+      dataTypeAttributesElement.setRandomNumber();
+    };
+    window.changeDate = function () {
+      dataTypeAttributesElement.setRandomDate();
+    };
+    window.changeBoolean = function () {
+      dataTypeAttributesElement.switchBoolean();
+    };
+
+  </script>
+</body>
+</html>

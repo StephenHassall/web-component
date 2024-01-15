@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Element and Constructor Example</title>
+</head>
+<body>
+  <p>
+    By pressing the button below the browser will try to create an instance of the 
+    <code>create-element-constructor</code> custom element. But because it tries to
+    do some things to the DOM while it is not attached to the DOM, it will throw an error.
+    You can see the error in the console log.
+  </p>
+  <button onclick="createButtonClick()">Create Custom Element</button>
+  <script type="module">
+
+    class CreateElementConstructor extends HTMLElement {
+      constructor() {
+          super();
+          this.innerText = 'custom element created';
+      }
+    }
+    customElements.define('create-element-constructor', CreateElementConstructor);
+
+    // Create button click event
+    window.createButtonClick = function () {
+      // This will create an instance of the <create-element-constuctor> custom element, but
+      // because it tries to set its own internal DOM parts, the browser will throw and error.
+      const createElementConstructor = document.createElement('CREATE-ELEMENT-CONSTRUCTOR');
+    };
+
+  </script>
+</body>
+</html>

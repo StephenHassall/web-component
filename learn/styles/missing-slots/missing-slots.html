@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Missing Slots Example</title>
+  <script type="module" src="missing-slots.js"></script>
+</head>
+<body>
+  <p>Example of missing slots and styles.</p>
+  <missing-slots>
+    <span slot="make-italic">Some italic text</span>
+    <span>A default element</span>
+  </missing-slots>
+
+  <br>
+
+  <missing-slots>
+    <span slot="make-bold">Some bold text</span>
+    Some default text
+  </missing-slots>
+
+</body>
+</html>

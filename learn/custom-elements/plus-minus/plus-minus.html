@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plus Minus Example</title>
+  <script type="module" src="plus-minus.js"></script>
+</head>
+<body>
+  <p>
+    Example using the <code>&lt;plus-minus&gt;</code> custom element. This is used to show when to use the
+    <b>connectedCallback</b> and <b>disconnectedCallback</b> event functions. Press the attach buttom below
+    to create and add the <code>&lt;plus-minus&gt;</code> custom element to the DOM.
+  </p>
+  <p>
+    You can then use the <b>Add</b> and <b>Minus</b> buttons to increase and decrease the count value.
+  </p>
+  <p>
+    You can detach the custom element so that its internal click events are also removed. Or you
+    can detach it a not remove the click events. This will simulate what happens if you do not
+    match the events removed with those added. You will be able to monitor memory leaks with this.
+  </p>
+  <div id="dom"></div>
+  <button onclick="attachCustomElementTagToDomClick()">Attach Custom Element Tag to DOM</button>
+  <button onclick="detachWithRemoveClickEventClick()">Detach with Remove Click Events</button>
+  <button onclick="detachWithoutRemoveClickEventClick()">Detach without Remove Click Events</button>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+  <script type="module">
+    // Get DOM element
+    const domElement = document.getElementById('dom');
+
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Create plus-minus custom element
+    const plusMinusElement = document.createElement('PLUS-MINUS');
+
+    // Attach/detach plus minus element to/from DOM events
+    window.attachCustomElementTagToDomClick = function () {
+      domElement.appendChild(plusMinusElement);
+    };
+    window.detachWithRemoveClickEventClick = function () {
+      window.plusMinusRemoveClickEvent = true;
+      domElement.removeChild(plusMinusElement);
+    };
+    window.detachWithoutRemoveClickEventClick = function () {
+      window.plusMinusRemoveClickEvent = false;
+      domElement.removeChild(plusMinusElement);
+    };
+  </script>
+
+</body>
+</html>

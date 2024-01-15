@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Include Itself Example</title>
+</head>
+<body>
+  <p>
+    By pressing the button below the browser will create the <code>include-itself</code> custom element and
+    add it to the DOM.
+    This will add some inner HTML that includes the <code>&lt;include-itself&gt;</code> tag.
+    This will create an infinite loop of the custom element creating and adding itself forever.
+  </p>
+  <p>
+    The infinite loop will stop because of the limited stack memory that is allowed. The end
+    result is an error message, shown in the console area.
+  </p>
+  <button onclick="createButtonClick()">Create and Add to DOM</button>
+  <div id="dom"></div>
+  <script type="module">
+
+    class IncludeItself extends HTMLElement {
+      constructor() {
+          super();
+      }
+      connectedCallback() {
+        this.innerHTML = '<include-itself></include-itself>';
+      }
+    }
+    customElements.define('include-itself', IncludeItself);
+
+    // Get DOM element
+    const domElement = document.getElementById('dom');
+
+    // Create button click event
+    window.createButtonClick = function () {
+      // Create <include-itself> element
+      const includeItselfElement = document.createElement('INCLUDE-ITSELF');
+
+      // Add to DOM
+      domElement.appendChild(includeItselfElement);
+    };
+
+  </script>
+</body>
+</html>

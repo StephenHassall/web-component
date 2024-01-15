@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Event Example</title>
+  <script type="module" src="custom-event.js"></script>
+</head>
+<body>
+  <p>Looking at how web components can have their own events.</p>
+  <custom-event-example id="test"></custom-event-example>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <br>
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    const customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Get test element
+    const testElement = document.getElementById('test');
+
+    // Add events
+    testElement.addEventListener('odd', function (event) {
+      customLogEvent('ODD: ' + event.detail.toString());
+    });
+    testElement.addEventListener('even', function (event) {
+      customLogEvent('EVEN: ' + event.detail.toString());
+    });
+    testElement.addEventListener('clear', function (event) {
+      customLogEvent('CLEAR');
+    });
+  </script>
+</body>
+</html>

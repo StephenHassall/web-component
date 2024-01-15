@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Property and Attribute Example</title>
+  <script type="module" src="property-attribute.js"></script>
+</head>
+<body>
+  <p>
+    Working with properties and attributes.
+  </p>
+  <property-attribute
+    id="test"
+    name="Sue Green"
+    age="48">
+  </property-attribute>
+  <br>
+  <button onclick="setNameProperty()">Set Name Property</button><br>
+  <button onclick="setAgeProperty()">Set Age Property</button><br>
+  <button onclick="setNameAttribute()">Set Name Attribute</button><br>
+  <button onclick="setAgeAttribute()">Set Age Attribute</button><br>
+  <p id="name">Name = ?</p>
+  <p id="age">Age = ?</p>
+  <button onclick="getNameProperty()">Get Name Property</button><br>
+  <button onclick="getAgeProperty()">Get Age Property</button><br>
+  <button onclick="getNameAttribute()">Get Name Attribute</button><br>
+  <button onclick="getAgeAttribute()">Get Age Attribute</button><br>
+  <script type="module">
+
+    // Get properties attributes element
+    const propertiesAttributesElement = document.getElementById('test');
+
+    // Get name and age element
+    const nameElement = document.getElementById('name');
+    const ageElement = document.getElementById('age');
+
+    // Make some random text
+    const makeRandomText = function () {
+        // Set character list
+        const charList = 'abcdefghijklmnopqrstuvwxyz';
+
+        // Set text list
+        let textList = [];
+
+        // For each character
+        for (let count = 0; count < 10; count++) {
+            // Add random character to text list
+            textList.push(charList.charAt(Math.random() * charList.length));
+        }
+
+        // Return the random text
+        return textList.join('');
+    };
+
+    // Set click events
+    window.setNameProperty = function () {
+      propertiesAttributesElement.name = makeRandomText();
+    };
+    window.setAgeProperty = function () {
+      propertiesAttributesElement.age = Math.floor(Math.random() * 50);
+    };
+    window.setNameAttribute = function () {
+      propertiesAttributesElement.setAttribute('name', makeRandomText());
+    };
+    window.setAgeAttribute = function () {
+      propertiesAttributesElement.setAttribute('age',  Math.floor(Math.random() * 50));
+    };
+
+    // Get click events
+    window.getNameProperty = function () {
+      const name = propertiesAttributesElement.name;
+      nameElement.innerText = 'Name = ' + name;
+    };
+    window.getAgeProperty = function () {
+      const age = propertiesAttributesElement.age;
+      ageElement.innerText = 'Age = ' + age.toString();
+    };
+    window.getNameAttribute = function () {
+      const name = propertiesAttributesElement.getAttribute('name');
+      nameElement.innerText = 'Name = ' + name;
+    };
+    window.getAgeAttribute = function () {
+      const age = propertiesAttributesElement.getAttribute('age');
+      ageElement.innerText = 'Age = ' + age;
+    };
+
+  </script>
+</body>
+</html>

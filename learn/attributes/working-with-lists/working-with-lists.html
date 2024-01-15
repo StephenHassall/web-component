@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Working With Lists Example</title>
+  <script type="module" src="working-with-lists.js"></script>
+</head>
+<body>
+  <p>
+    Working with lists.
+  </p>
+  <working-with-lists id="test"></working-with-lists>
+  <br>
+  <button onclick="addListItem()">Add List Item</button><br>
+  <button onclick="clearList()">Clear List</button><br>
+  <button onclick="setNewList()">Set New List</button><br>
+  <script type="module">
+
+    // Get working with lists element
+    const workingWithListsElement = document.getElementById('test');
+
+    // Add list item click event
+    window.addListItem = function () {
+      // Create item
+      const item = (new Date()).toString();
+
+      // Add to list
+      workingWithListsElement.list.push(item);
+
+      // Update the list shown
+      workingWithListsElement.update();
+    };
+
+    // Clear list click event
+    window.clearList = function () {
+      // Reset list to an empty one
+      workingWithListsElement.list = [];
+
+      // Update the list shown
+      workingWithListsElement.update();
+    };
+
+    // Set new list click event
+    window.setNewList = function () {
+      // Create list
+      let newList = [
+        'New Item 1',
+        'New Item 2',
+        'New Item 3'
+      ];
+
+      // Reset list to the new one
+      workingWithListsElement.list = newList;
+
+      // Update the list shown
+      workingWithListsElement.update();
+    };
+
+  </script>
+</body>
+</html>

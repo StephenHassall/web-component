@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitor Events Example</title>
+</head>
+<body>
+  <p>
+    Creating an instance of a custom element and attaching it to a parent element, and
+    attaching that to the DOM. Add and update the attribute. Monitors all the related events
+    to see when things happen.
+  </p>
+  <div id="dom"></div>
+  <button onclick="attachTagToParentClick()">Attach Tag to Parent</button>
+  <button onclick="detachTagFromParentClick()">Detach Tag from Parent</button>
+  <br>
+  <button onclick="attachParentToDomClick()">Attach Parent to DOM</button>
+  <button onclick="detachParentFromDomClick()">Detach Parent from DOM</button>
+  <br>
+  <button onclick="setAttributeClick()">Set Attribute</button>
+  <button onclick="setRandomAttributeClick()">Set Random Attribute</button>
+  <button onclick="removeAttributeClick()">Remove Attribute</button>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get DOM element
+    const domElement = document.getElementById('dom');
+
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Create parent DIV element
+    const parentElement = document.createElement('DIV');
+
+    // Create monitor events custom element
+    const monitorEventsElement = document.createElement('MONITOR-EVENTS');
+
+    // Attach/detach tag to/from parent events
+    window.attachTagToParentClick = function () {
+      parentElement.appendChild(monitorEventsElement);
+    };
+    window.detachTagFromParentClick = function () {
+      parentElement.removeChild(monitorEventsElement);
+    };
+
+    // Attach/detach parent to/from DOM events
+    window.attachParentToDomClick = function () {
+      domElement.appendChild(parentElement);
+    };
+    window.detachParentFromDomClick = function () {
+      domElement.removeChild(parentElement);
+    };
+
+    // Set/update attribute
+    window.setAttributeClick = function () {
+      monitorEventsElement.setAttribute('test', 'hello');
+    };
+    window.setRandomAttributeClick = function () {
+      monitorEventsElement.setAttribute('test', Math.random().toString());
+    };
+    window.removeAttributeClick = function () {
+      monitorEventsElement.removeAttribute('test');
+    };
+
+    // Load the custom element last
+    import('./monitor-events.js');
+
+  </script>
+</body>
+</html>

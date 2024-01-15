@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Invalid Value Example</title>
+  <script type="module" src="invalid-value.js"></script>
+</head>
+<body>
+  <style>
+    form-invalid-value:invalid {
+      background-color: darkorange;
+    }
+  </style>
+  <p>Looking at a form friendly web compoment and how to made them required or invalid.</p>
+  <form action="invalid-value.html">
+    <label for="name">Normal</label>
+    <input id="name" type="text" name="a" required>
+    <br>
+    <br>
+    <label>Random number</label>
+    <form-invalid-value name="b"></form-invalid-value>
+    <br>
+    <br>
+    <input type="submit">
+  </form>
+</body>
+</html>

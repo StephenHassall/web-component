@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyTag Example</title>
+</head>
+<body>
+  <p>
+    At the start the <code>&lt;delayed-load&gt;</code> custom element tag does nothing.
+    Press the <b>Load</b> button to have the <i>delayed-load.js</i> file imported so
+    that it makes the custom element come alive.
+  </p>
+  <button onclick="loadButtonClick()">Load</button>
+  <delayed-load></delayed-load>
+
+  <script type="module">
+
+    // Load button click event
+    window.loadButtonClick = function () {
+      // This will import the delayed-load.js source file into the page.
+      // Once loaded the browse will see that the above <delayed-load> tag
+      // is linked to it and will create an instance of the class and call
+      // the constructor function.
+      import('./delayed-load.js');
+    };
+
+  </script>
+</body>
+</html>

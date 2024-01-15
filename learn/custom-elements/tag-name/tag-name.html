@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tag Name Example</title>
+</head>
+<body>
+  <p>
+    Tests what happens if you try to use an invalid custom element name.
+  </p>
+  <p><b>Valid Tags</b></p>
+  <button onclick="performTest(0)">Create <code>&lt;valid-tag&gt;</code></button>
+  <br>
+  <button onclick="performTest(1)">Create <code>&lt;lots-of-words-with-hyphen&gt;</code></button>
+  <br>
+  <button onclick="performTest(2)">Create <code>&lt;one-hyphen_with_underscore&gt;</code></button>
+  <br>
+  <button onclick="performTest(3)">Create <code>&lt;one-hyphen.with.periods&gt;</code></button>
+  <br>
+  <p><b>Invalid Tags</b></p>
+  <button onclick="performTest(4)">Create <code>&lt;singleword&gt;</code></button>
+  <br>
+  <button onclick="performTest(5)">Create <code>&lt;Starts-uppercase&gt;</code></button>
+  <br>
+  <button onclick="performTest(6)">Create <code>&lt;UPPER-CASE&gt;</code></button>
+  <br>
+  <button onclick="performTest(7)">Create <code>&lt;1-starts-with-number&gt;</code></button>
+  <br>
+  <button onclick="performTest(8)">Create <code>&lt;no_hyphen&gt;</code></button>
+  <br>
+  <button onclick="performTest(9)">Create <code>&lt;font-face&gt;</code></button>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Create a fake custom elements which do nothing
+    class FakeCustomElement0 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement1 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement2 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement3 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement4 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement5 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement6 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement7 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement8 extends HTMLElement { constructor() { super(); } }
+    class FakeCustomElement9 extends HTMLElement { constructor() { super(); } }
+
+    // Set tag list
+    const tagList = [
+      { name: 'valid-tag', class: FakeCustomElement0 },
+      { name: 'lots-of-words-with-hyphen', class: FakeCustomElement1 },
+      { name: 'one-hyphen_with_underscore', class: FakeCustomElement2 },
+      { name: 'one-hyphen.with.periods', class: FakeCustomElement3 },
+      { name: 'singleword', class: FakeCustomElement4 },
+      { name: 'Starts-uppercase', class: FakeCustomElement5 },
+      { name: 'UPPER-CASE', class: FakeCustomElement6 },
+      { name: '1-starts-with-number', class: FakeCustomElement7 },
+      { name: 'no_hyphen', class: FakeCustomElement8 },
+      { name: 'font-face', class: FakeCustomElement9 }
+    ];
+
+    // Perform test click event
+    window.performTest = function (tagNumber) {
+      // Get tag
+      const tag = tagList[tagNumber];
+
+      // Put code between a try/catch block
+      try {
+        // Create custom element
+        customElements.define(tag.name, tag.class);
+
+        // Log success
+        window.customLogEvent(tag.name + ' created.')
+      } catch (error) {
+        window.customLogEvent(tag.name + ' error. ' + error.toString());
+      }
+    };
+
+  </script>
+</body>
+</html>

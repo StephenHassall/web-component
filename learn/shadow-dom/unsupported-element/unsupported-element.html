@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unsupported Element Example</title>
+</head>
+<body>
+  <p>
+    Two custom elements that have been derived from something other than the normal <b>HTMLElement</b>.
+    Each tries to create and attach a shadow DOM.
+  </p>
+  <p>
+    <code>&lt;button is="custom-paragraph"&gt;</code> custom element the is derived from <b>HTMLParagraphElement</b>.
+    It will be able to create and attach a shadow DOM.<br>
+    <p is="custom-paragraph"></p>
+  </p>
+  <p>
+    <code>&lt;a is="custom-a"&gt;</code> custom element the is derived from <b>HTMLAnchorElement</b>. It will fail
+    however, because you can not create a shadow DOM within anchor elements.<br>
+    <a is="custom-a"></a>
+  </p>
+  <button onclick="loadButtonClick()">Load</button>
+  <script type="module">
+
+    // Load button click event
+    window.loadButtonClick = function () {
+      // This will import the unsupported-element.js source file into the page.
+      import('./unsupported-element.js');
+    };
+
+  </script>
+</body>
+</html>

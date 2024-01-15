@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Closed Shadow DOM Example</title>
+  <script type="module" src="open-closed.js"></script>
+</head>
+<body>
+  <p>Looking at the difference between an open and closed shadow DOM.</p>
+  <open-shadow-dom id="open"></open-shadow-dom>
+  <br>
+  <closed-shadow-dom id="closed"></closed-shadow-dom>
+  <br><br>
+  <button onclick="lookInsideOpenClick()">Look inside open Shadow DOM</button>
+  <br>
+  <button onclick="lookInsideClosedClick()">Look inside closed Shadow DOM</button>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Get open shadow DOM element
+    const openElement = document.getElementById('open');
+
+    // Get closed shadow DOM element
+    const closedElement = document.getElementById('closed');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Look inside open click
+    window.lookInsideOpenClick = function () {
+      // Check shadowRoot property
+      if (openElement.shadowRoot === null) {
+        window.customLogEvent('openElement.shadowRoot === null');
+      } else {
+        window.customLogEvent('openElement.shadowRoot !== null');
+      }
+    };
+
+    // Look inside closed click
+    window.lookInsideClosedClick = function () {
+      // Check shadowRoot property
+      if (closedElement.shadowRoot === null) {
+        window.customLogEvent('openElement.shadowRoot === null');
+      } else {
+        window.customLogEvent('openElement.shadowRoot !== null');
+      }
+    };
+
+  </script>
+</body>
+</html>

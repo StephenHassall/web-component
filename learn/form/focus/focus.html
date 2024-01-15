@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Example</title>
+  <script type="module" src="focus.js"></script>
+</head>
+<body>
+  <p>Looking at the delegateFocus setting and how it effects focus.</p>
+  <label for="inputA">Before Input A</label>
+  <input type="text" id="inputA"><br>
+  <label for="inputB">Before Input B</label>
+  <input type="text" id="inputB"><br>
+
+  <br>
+  <label for="focus1">Label for below web component</label>
+  <br>
+  <with-delegate-focus id="focus1"></with-delegate-focus>
+  <br>
+  <br>
+  <label for="focus2">Label for below web component</label>
+  <br>
+  <without-delegate-focus id="focus2"></without-delegate-focus>
+  <br>
+  <br>
+
+  <label for="inputC">After Input C</label>
+  <input type="text" id="inputC"><br>
+  <label for="inputD">After Input D</label>
+  <input type="text" id="inputD"><br>
+
+  <br>
+  <button onclick="focus1Click()">Give &lt;with-delegate-focus&gt; the Focus</button>
+  <button onclick="focus2Click()">Give &lt;without-delegate-focus&gt; the Focus</button>
+
+  <script type="module">
+
+    // Focus click events
+    window.focus1Click = function () {
+      // Get focus 1 element
+      const focus1Element = document.getElementById('focus1');
+
+      // Give it the focus
+      focus1Element.focus();
+    };
+    window.focus2Click = function () {
+      // Get focus 2 element
+      const focus2Element = document.getElementById('focus2');
+
+      // Give it the focus
+      focus2Element.focus();
+    };
+
+  </script>
+
+</body>
+</html>

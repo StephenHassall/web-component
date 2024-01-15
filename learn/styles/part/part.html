@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Part Styles Example</title>
+  <script type="module" src="part.js"></script>
+</head>
+<body>
+  <style>
+    part-example::part(top) {
+      background-color: red;
+    }
+    part-example::part(middle) {
+      background-color: lightblue;
+    }
+    part-example::part(highlight) {
+      background-color: darkorange;
+    }
+    part-example::part(bottom) {
+      background-color: lightgreen;
+    }
+    part-example::part(middle highlight) {
+      font-size: x-large;
+    }
+  </style>
+  <p>Example of using CSS part to style inner parts of web component.</p>
+  <part-example></part-example>
+</body>
+</html>

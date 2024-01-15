@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shadow DOM Barrier Example</title>
+  <script type="module" src="shadow-dom-barrier3.js"></script>
+</head>
+<body>
+  <style>
+    .class-outer {
+      display: block;
+      font-size: x-large;
+      color: red;
+      background-color: lightgray;
+      border: 4px solid blue;
+    }
+  </style>
+  <p>Example of how some styles can pass through the shadow DOM barrier.</p>
+  <with-shadow-dom3 class="class-outer"></with-shadow-dom3>
+  <br>
+  <with-shadow-dom3 style="color: gold; font-style: italic;"></with-shadow-dom3>
+</body>
+</html>

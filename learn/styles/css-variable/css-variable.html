@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Variable Styles Example</title>
+  <script type="module" src="css-variable.js"></script>
+</head>
+<body>
+  <style>
+    .class-variables {
+      --background-color: gray;
+      --text-color: white;
+    }
+  </style>
+  <p>Example of using CSS variables with styling.</p>
+  <css-variable></css-variable> Using defaults
+  <br>
+  <css-variable class="class-variables"></css-variable> Using a class
+  <br>
+  <css-variable style="--background-color: gold; --text-color: red;"></css-variable> Using inline
+</body>
+</html>

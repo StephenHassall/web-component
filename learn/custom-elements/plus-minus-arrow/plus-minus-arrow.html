@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plus Minus Arrow Functions Example</title>
+  <script type="module" src="plus-minus-arrow.js"></script>
+</head>
+<body>
+  <p>
+    Example using the <code>&lt;plus-minus-arrow&gt;</code> custom element. This is used to show what happens
+    if you use arrow event functions in <b>connectedCallback</b>. Because you can not remove the click event, each
+    time to detach and attach back again, you are creating another click event. Pressing add will fire 2 or more events
+    adding more than just 1 to the count value.
+  </p>
+  <div id="dom"></div>
+  <button onclick="attachCustomElementTagToDomClick()">Attach Custom Element Tag to DOM</button>
+  <button onclick="detachCustomElementTagFromDomClick()">Detach Custom Element Tag from DOM</button>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+  <script type="module">
+    // Get DOM element
+    const domElement = document.getElementById('dom');
+
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Create plus-minus-arrow custom element
+    const plusMinusArrowElement = document.createElement('PLUS-MINUS-ARROW');
+
+    // Attach/detach plus minus arrow element to/from DOM events
+    window.attachCustomElementTagToDomClick = function () {
+      domElement.appendChild(plusMinusArrowElement);
+    };
+    window.detachCustomElementTagFromDomClick = function () {
+      domElement.removeChild(plusMinusArrowElement);
+    };
+  </script>
+
+</body>
+</html>

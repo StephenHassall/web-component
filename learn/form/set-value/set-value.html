@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Set Value Example</title>
+  <script type="module" src="set-value.js"></script>
+</head>
+<body>
+  <p id="url">URL: ???</p>
+  <p>Looking at a form friendly web compoment and how to set its value when you submit.</p>
+  <form action="set-value.html">
+    <label for="normal">Normal</label>
+    <input id="normal" type="text" name="a">
+    <br>
+    <br>
+    <label>Random number</label>
+    <form-set-value name="b"></form-set-value>
+    <br>
+    <br>
+    <input type="submit">
+  </form>
+  <script type="module">
+    // Get URL
+    const url = location.href;
+
+    // Get URL element
+    const urlElement = document.getElementById('url');
+
+    // Set inner text
+    urlElement.innerText = 'URL: ' + url;
+  </script>
+</body>
+</html>

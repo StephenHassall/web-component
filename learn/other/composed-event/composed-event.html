@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Composed Event Example</title>
+  <script type="module" src="composed-event.js"></script>
+</head>
+<body>
+  <p>Looking at how to fire events throught a web component to be processed the main DOM.</p>
+  <composed-parent-event-example id="test"></composed-parent-event-example>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <br>
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Get test element
+    const testElement = document.getElementById('test');
+
+    // Add events
+    testElement.addEventListener('test', function (event) {
+      window.customLogEvent('OUTSIDE: test');
+    });
+    testElement.addEventListener('click', function (event) {
+      window.customLogEvent('OUTSIDE: click');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Host Example</title>
+  <script type="module" src="host.js"></script>
+</head>
+<body>
+  <style>
+    .class-outer1 {
+      font-style: italic;
+    }
+    .class-outer2 {
+      font-style: underline;
+    }
+    host-example {
+      font-size: x-large;
+    }
+  </style>
+  <p>Example of different host styles.</p>
+  <host-example></host-example> Host without styles
+  <br>
+  <host-example style="background-color:lightgray;"></host-example> Host with inline styles
+  <br>
+  <host-example attribute-set></host-example> Host with attribute
+  <br>
+  <host-example attribute-value="good"></host-example> Host with attribute value
+  <br>
+  <host-example attribute-used></host-example> Host with attribute used and another attribute not used
+  <br>
+  <host-example class="class-outer1"></host-example> Host with class
+  <br>
+  <div class="class-outer2">
+    <host-example></host-example> Host with parent with class
+  </div>
+  <h2>
+    <host-example></host-example> Host with parent of tag H2
+  </h2>
+</body>
+</html>

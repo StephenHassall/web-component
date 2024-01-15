@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slot Change Example</title>
+</head>
+<body>
+  <p>Example of the slot change event.</p>
+  <slot-change id="slot-change-id">
+    <div id="first-slotted" slot="make-bold">First slotted.</div>
+    <div id="second-slotted" slot="make-bold">Second slotted.</div>
+  </slot-change>
+  <br>
+  <button onclick="removeSecondClick()">Remove the second slotted</button>
+  <br>
+  <button onclick="addThirdClick()">Add a third slotted</button>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Remove second click event
+    window.removeSecondClick = function () {
+      // Get slot change web component element
+      let slotChangeElement = document.getElementById('slot-change-id');
+
+      // Look for second slotted element
+      const secondSlottedElement = document.getElementById('second-slotted');
+
+      // If found then remove
+      if (secondSlottedElement !== null) slotChangeElement.removeChild(secondSlottedElement);
+    };
+
+    // Add third click event
+    window.addThirdClick = function () {
+      // Get slot change web component element
+      let slotChangeElement = document.getElementById('slot-change-id');
+
+      // Create third element
+      let thirdElement = document.createElement('DIV');
+
+      // Set inner text
+      thirdElement.innerText = 'Third slotted.';
+
+      // Set the slot attribute
+      thirdElement.setAttribute('slot', 'make-bold');
+
+      // Add to slot change web component
+      slotChangeElement.appendChild(thirdElement);
+    };
+
+
+    // Load the slot change last
+    import('./slot-change.js');
+
+  </script>
+</body>
+</html>

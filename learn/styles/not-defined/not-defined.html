@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not Defined Example</title>
+</head>
+<body>
+  <style>
+    .hide-until-defined:not(:defined) {
+      display: none;
+    }
+  </style>
+  <p>
+    At the start the <code>&lt;not-defined&gt;</code> web component tag does nothing.
+    Press the <b>Load</b> button to have the <i>not-defined.js</i> file imported so
+    that it makes the web component come alive. The first one will show its inner slots.
+    The second one has an inline style that hides the whole element until it is defined (loaded).
+  </p>
+  <button onclick="loadClick()">Load</button>
+
+  <p>By default</p>
+  <not-defined>
+    <div>Default slot text 1.</div>
+    <div>Default slot text 2.</div>
+  </not-defined>
+  <br>
+  <p>With :not(:defined) used</p>
+  <not-defined class="hide-until-defined">
+    <div>Default slot text 2.</div>
+    <div>Default slot text 3.</div>
+  </not-defined>
+
+  <script type="module">
+
+    // Load button click event
+    window.loadClick = function () {
+      // This will import the not-defined.js source file into the page
+      import('./not-defined.js');
+    };
+
+  </script>
+</body>
+</html>

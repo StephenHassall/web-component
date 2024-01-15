@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connected and Disconnected Example</title>
+  <script type="module" src="connected-disconnected.js"></script>
+</head>
+<body>
+  <p>
+    Creating an instance of a custom element and attaching it to a parent element, and
+    attaching that to the DOM. Monitor when the connectedCallback and disconnectedCallback
+    functions get called.
+  </p>
+  <div id="dom"></div>
+  <button onclick="attachTagToParentClick()">Attach Tag to Parent</button>
+  <button onclick="detachTagFromParentClick()">Detach Tag from Parent</button>
+  <br>
+  <button onclick="attachParentToDomClick()">Attach Parent to DOM</button>
+  <button onclick="detachParentFromDomClick()">Detach Parent from DOM</button>
+  <br>
+  <pre id="output" style="background-color: lightgray;"></pre>
+
+  <script type="module">
+    // Get DOM element
+    const domElement = document.getElementById('dom');
+
+    // Get output element
+    const outputElement = document.getElementById('output');
+
+    // Custom log event
+    window.customLogEvent = function (text) {
+      console.log(text);
+      outputElement.innerText = outputElement.innerText + text + '\r\n';
+    };
+
+    // Create parent DIV element
+    const parentElement = document.createElement('DIV');
+
+    // Create connected-disconnected custom element
+    const connectedDisconnectedElement = document.createElement('CONNECTED-DISCONNECTED');
+
+    // Attach/detach tag to/from parent events
+    window.attachTagToParentClick = function () {
+      parentElement.appendChild(connectedDisconnectedElement);
+    };
+    window.detachTagFromParentClick = function () {
+      parentElement.removeChild(connectedDisconnectedElement);
+    };
+
+    // Attach/detach parent to/from DOM events
+    window.attachParentToDomClick = function () {
+      domElement.appendChild(parentElement);
+    };
+    window.detachParentFromDomClick = function () {
+      domElement.removeChild(parentElement);
+    };
+
+  </script>
+</body>
+</html>

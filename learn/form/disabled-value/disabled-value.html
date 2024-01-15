@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Set Value Example</title>
+  <script type="module" src="disabled-value.js"></script>
+</head>
+<body>
+  <p>Looking at a form friendly web compoment and how to set disable it.</p>
+  <form>
+    <label for="normal">Normal #1</label>
+    <input id="normal" type="text" name="a">
+    <br>
+    <label>Random number #1</label>
+    <form-disabled-value id="test1" name="b"></form-disabled-value>
+    <br>
+    <br>
+    <fieldset id="test2">
+      <label for="normal">Normal #2</label>
+      <input id="normal" type="text" name="c">
+      <br>
+      <label>Random number #2</label>
+      <form-disabled-value name="d"></form-disabled-value>
+    </fieldset>
+  </form>
+  <br>
+  <br>
+  <button onclick="changeRandomClick(1, true)">Disable Random Number #1</button>
+  <button onclick="changeRandomClick(1, false)">Enable Random Number #1</button>
+  <br>
+  <button onclick="changeRandomClick(2, true)">Disable Random Number #2</button>
+  <button onclick="changeRandomClick(2, false)">Enable Random Number #2</button>
+  <script type="module">
+
+    // Click event
+    window.changeRandomClick = function (random, disable) {
+      // Get test element
+      const testElement = document.getElementById('test' + random);
+
+      // If disabled
+      if (disable === true) {
+        // Add disabled attribute
+        testElement.setAttribute('disabled','');
+      } else {
+        // Remove disabled attribute
+        testElement.removeAttribute('disabled');
+      }
+    };
+
+  </script>
+
+</body>
+</html>
