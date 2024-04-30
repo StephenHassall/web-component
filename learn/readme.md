@@ -15,8 +15,8 @@ Each folder contains the examples for the different topics found on on [CodeRunD
 |`introduction`|A look at what a web component is and how to add it to your site.|
 |`custom-element`|A detailed look at how a web component works.|
 |`attributes`|Looking at how attributes can be used to control your web components.|
-|`Shadow DOM`|Explore how the shadow DOM can make all the difference.|
-|`Slot`|Understand how to use slots to allow your web component to be customisable.|
-|`Styles`|Adding styles to your web componets can be tricky.|
-|`Form`|See how to turn your web component into a form input.|
-|`Other`|Other information you will need to know about.|
+|`shadow-donM`|Explore how the shadow DOM can make all the difference.|
+|`slot`|Understand how to use slots to allow your web component to be customisable.|
+|`styles`|Adding styles to your web componets can be tricky.|
+|`form`|See how to turn your web component into a form input.|
+|`other`|Other information you will need to know about.|
